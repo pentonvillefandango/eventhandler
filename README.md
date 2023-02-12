@@ -1,4 +1,4 @@
-# eventhandler
+# eventigy
 
 ## v0.1 --complete
 
