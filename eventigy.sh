@@ -13,35 +13,35 @@ delete_all() {
     else
         echo "Operation Cancelled"
     fi
-    exit 0
 }
 
 delete_days() {
-echo "days"
+    echo "Deleting all Events that are older than  ${DEL_DAYS} days"
+
 }
 
 delete_hours() {
-echo "hours"
+    echo "Deleting all Events that are older than  ${DEL_HOURS} days"
 
 }
 
 delete_minutes() {
-echo "minutes"
+    echo "Deleting all Events that are older than  ${DEL_MINUTES} days"
 
 }
 
 delete_resolved() {
-echo "resolved"
+    echo "Deleting all Resolved events"
 
 }
 
 delete_text() {
-echo "text"
+    echo "Deleting all Events that contain the following text in the comments: ${DEL_TEXT}"
 
 }
 
 unresolve() {
-echo "unresolved"
+    echo "Changing status of all Resolved Events to Not Resolved"
 
 }
 
@@ -50,13 +50,13 @@ echo "
 This script assists in handling events.
 Usage is as follows:
 
-eventigy.sh -D          Delete ALL events
-eventigy.sh -d value    Delete all events older than (value) days
-eventigy.sh -h value    Delete all events older than (value) hours
-eventigy.sh -m value    Delete all events older than (value) minutes  
-eventigy.sh -c text     Delete all events containing (text)
-eventigy.sh -r          Delete all events in 'Resolved' state
-eventigy.sh -u          Change state of all events to 'Not Resolved'
+eventigy.sh -D          Delete ALL Events
+eventigy.sh -d value    Delete all Events older than (value) days
+eventigy.sh -h value    Delete all Events older than (value) hours
+eventigy.sh -m value    Delete all Events older than (value) minutes  
+eventigy.sh -c text     Delete all Events containing (text)
+eventigy.sh -r          Delete all Events in 'Resolved' state
+eventigy.sh -u          Change state of all Events to 'Not Resolved'
 eventigy.sh -e          Show this help
 "
 }
@@ -66,39 +66,39 @@ do
     case $SCRIPT_OPTIONS in
         D)  
             delete_all
-            exit 1
+            exit 0
             ;;
         d)  
             DEL_DAYS=${OPTARGS}
             delete_days
-            exit 1
+            exit 0
             ;;
         h)  
            DEL_HOURS=${OPTARGS}
            delete_hours
-           exit 1
+           exit 0
            ;;
         m)  
            DEL_MINUTES=${OPTARGS}
            delete_minutes
-           exit 1
+           exit 0
            ;;
         r)  
            delete_resolved
-           exit 1
+           exit 0
            ;;
         u)  
            unresolve
-           exit 1
+           exit 0
            ;;
         c)  
            DEL_TEXT=${OPTARGS}
            delete_text
-           exit 1
+           exit 0
            ;;
         e)  
            help
-           exit 1
+           exit 0
            ;;
    esac
 done
